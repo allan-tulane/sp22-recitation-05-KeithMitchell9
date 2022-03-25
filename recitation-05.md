@@ -1,7 +1,6 @@
 # CMPS 2200  Recitation 05
 
-**Name (Team Member 1):**_________________________  
-**Name (Team Member 2):**_________________________
+**Name (Team Member 1):** Keith J Mitchell
 
 
 In this lab, we'll continue working with sequence functions and sorting.
@@ -26,8 +25,6 @@ The algorithm proceeds by first counting how often each value appears. Based on 
 1. Implement a simple, sequential version of `count_values` (linear span and work) and test it with `test_count_values`.
 
 .  
-.  
-.  
 
 2. Continuing our example, `counts` should now be `[2, 3, 2, 1]`. We next need to convert this into a list indicating the location of the first appearance of each value in the output.
 
@@ -36,9 +33,6 @@ E.g., `positions=[0, 2, 5, 7]` means that, in the final output, the first 0 appe
 We can use `scan` to create the needed list. You may need to adjust slightly the output of scan to get the needed list. Complete `get_positions` and test with `test_get_positions`.
 
 .  
-.  
-.  
-. 
 
 
 3. Finally, we'll use this positions array to construct the final output. First, we'll create the output list ($n$ elements). Then, we will loop through the original input array once again. For each value, we'll look up in the `positions` array where the value should go. E.g., for the first value 2, we look up `positions[2]`, which tells us the 2 should go in index 5 in the output. To update `counts` for future iterations, we will then increment `counts` by one for the value we just read. E.g., `positions[2]` will increment from 5 to 6; the next 2 we read will be placed in index 6.
@@ -46,11 +40,5 @@ We can use `scan` to create the needed list. You may need to adjust slightly the
 Implement `construct_output` with a simple for loop and test with `test_construct_output`.
 
 .  
-.  
-. 
 
 4. Our implementation of `count_values` has poor span. Let's instead implement it using map-reduce. Complete `count_map`, `count_reduce`, which are used by `count_values_mr` to construct the `counts` variable using map-reduce. Test with `test_count_values_mr`.
-
-
-
-

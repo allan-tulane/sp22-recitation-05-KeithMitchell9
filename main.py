@@ -17,57 +17,32 @@ def supersort(a, k):
     return construct_output(a, positions)
 
 def count_values(a, k):
-    """
-    Params:
-      a.....input list
-      k.....maximum value in a
-      
-    Returns:
-      a list of k values; element i of the list indicates
-      how often value i appears in a
-      
-    >>> count_values([2,2,1,0,1,0,1,3], 3)
-    [2, 3, 2, 1]
-    """
-    ###TODO
-    pass
+  list1 = [0] * (k + 1)
+  for i in a:
+    list1[i] += 1
+  return list1
 
 def test_count_values():
     assert count_values([2,2,1,0,1,0,1,3], 3) == [2, 3, 2, 1]
     
 def get_positions(counts):
-    """
-    Params:
-      counts...counts of each value in the input
-    Returns:
-      a list p where p[i] indicates the location of the first
-      appearance of i in the desired output.
-
-    >>> get_positions([2, 3, 2, 1])
-    [0, 2, 5, 7]    
-    """
-    ###TODO
-    pass
+  list2 = [0]
+  temp_counts = scan(plus, 0, counts)
+  counts = temp_counts[0]
+  counts = counts[:-1]
+  list2 += counts
+  return list2
     
 def test_get_positions():
     assert get_positions([2, 3, 2, 1]) == [0, 2, 5, 7]
     
 def construct_output(a, positions):
-    """
-    Construct the final, sorted output.
-
-    Params:
-      a...........input list
-      positions...list of first location of each value in the output.
-      
-    Returns:
-      sorted version of a
-
-    >>> construct_output([2,2,1,0,1,0,1,3], [0, 2, 5, 7])
-    [0,0,1,1,1,2,2,3]    
-    """
-    ###TODO
-    pass
+  newlist = []
+  count = count_values(a, max(a))
+  for i in range(len(positions)):
+    if count[i] != 0:
+      newlist += [i] * count[i]
+  return newlist
 
 def test_construct_output():
     assert construct_output([2,2,1,0,1,0,1,3], [0, 2, 5, 7]) == [0,0,1,1,1,2,2,3]
@@ -85,13 +60,10 @@ def test_count_values_mr():
     assert count_values_mr([2,2,1,0,1,0,1,3], 3) == [2, 3, 2, 1]
 
 def count_map(value):
-    ###TODO
-    pass
+  return [(value, 1)]
 
 def count_reduce(group):
-    ###TODO
-    pass
-
+  return (group[0], reduce(plus, 0, group[1]))
 
 # the below functions are provided for use above.
 
